@@ -46,6 +46,8 @@ MusicControlsInfo * musicControlsSettings;
         [updatedNowPlayingInfo setObject:playbackRate forKey:MPNowPlayingInfoPropertyPlaybackRate];
         
         nowPlayingInfoCenter.nowPlayingInfo = updatedNowPlayingInfo;
+        CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"{}"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 
     [self registerMusicControlsEventListener];
@@ -67,6 +69,8 @@ MusicControlsInfo * musicControlsSettings;
     [updatedNowPlayingInfo setObject:elapsed forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     [updatedNowPlayingInfo setObject:playbackRate forKey:MPNowPlayingInfoPropertyPlaybackRate];
     nowPlayingCenter.nowPlayingInfo = updatedNowPlayingInfo;
+    CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"{}"];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 // this was performing the full function of updateIsPlaying and just adding elapsed time update as well
